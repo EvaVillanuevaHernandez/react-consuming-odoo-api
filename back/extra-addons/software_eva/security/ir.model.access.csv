@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_software_eva_empresas_contratadoras_gestor,software_eva.empresas_contratadoras.gestor,model_software_eva_empresas_contratadoras,software_eva.grupo_gestor,1,1,1,1
+access_software_eva_empresas_contratadoras_operario,software_eva.empresas_contratadoras.operario,model_software_eva_empresas_contratadoras,software_eva.grupo_operario,1,0,0,0

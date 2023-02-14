@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <!-- GRUPO GESTOR DE EMPRESAS CONTRATADORAS-->
+    <record id="grupo_gestor" model= "res.groups" >
+       <field name="name"> Empresas contratadoras/Gestor Empresas contratadoras </field>
+       <field name="comment" > Perfil gestor de acceso a las Empresas contratadoras </field>
+    </record>
+    <!-- GRUPO OPERARIO DE EMPRESAS CONTRATADORAS -->
+    <record id="grupo_operario" model="res.groups" >
+       <field name="name"> Empresas contratadoras / Operario Empresas contratadoras </field>
+       <field name="comment"> Perfil operario de acceso a las Empresas contratadoras </field>
+     </record>
+
+     <!--Asignación de grupo de permisos Gestor ( grupo gestor ) al usuario Administrador-->
+      <record id="base.user_admin" model="res.users">
+        <field name="groups_id" eval ="[(4, ref('software_eva.grupo_gestor'))]"/>
+     </record>
+
+
+
+  </data>
+</odoo>

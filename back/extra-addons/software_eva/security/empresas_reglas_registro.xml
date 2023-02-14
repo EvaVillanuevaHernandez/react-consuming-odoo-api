@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.rule" id="empresas_contratadoras">
+        <field name="name">Programador solo accede a las tareas para modificarlas </field>
+        <field name="model_id" ref="model_software_eva_empresas_contratadoras"/>
+        <field name="domain_force">[('usuario','=','user.id')]</field>
+        <field name="groups" eval="[(4,ref('grupo_operario'))]"/>
+    </record>
+</odoo>
