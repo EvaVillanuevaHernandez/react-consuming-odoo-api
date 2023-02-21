@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import ProyectitoDataService from "../services/ProyectitoService";
-
+import './AddProyectito.css';
 const AddProyectito = () => {
   const initialContratadorState = {
     id: null,
     name:"",
     proyecto:"",
     asignada:"",
-    tags:""
+    bolita:""
   };
   const [proyectito, setProyectito] = useState(initialContratadorState);
   const [submitted, setSubmitted] = useState(false);
@@ -21,6 +21,7 @@ const AddProyectito = () => {
     var data = {
       name: proyectito.name,
       proyecto: proyectito.proyecto,
+      bolita:proyectito.bolita,
       
     };
 
@@ -30,7 +31,7 @@ const AddProyectito = () => {
           id: response.data.id,
           name:response.data.id,
           proyecto: response.data.proyecto,
-          
+          bolita: response.data.bolita
         });
         setSubmitted(true);
       })
@@ -49,7 +50,7 @@ const AddProyectito = () => {
       {submitted ? (
         <div>
           <h4>Se ha añadido correctamente!</h4>
-          <button className="btn btn-success" onClick={newProyectito}>
+          <button className="btn-env" onClick={newProyectito}>
             Añadir
           </button>
         </div>
@@ -67,46 +68,9 @@ const AddProyectito = () => {
               name="name"
             />
           </div>
-
-          {/* <div className="form-group">
-            <label htmlFor="proyecto">Nombre del proyecto</label>
-            <input
-              type="text"
-              className="form-control"
-              id="proyecto"
-              required
-              value={proyectito.proyecto}
-              onChange={handleInputChange}
-              name="proyecto"
-            />
-          </div> */}
-
-          {/* <div className="form-group">
-            <label htmlFor="asignada">Asignada a</label>
-            <input
-              type="text"
-              className="form-control"
-              id="asignada"
-              required
-              value={proyectito.asignada}
-              onChange={handleInputChange}
-              name="asignada"
-            />
-          </div> */}
-
-          {/* <div className="form-group">
-            <label htmlFor="tags">Tags</label>
-            <input
-              type="text"
-              className="form-control"
-              id="tags"
-              required
-              value={proyectito.tags}
-              onChange={handleInputChange}
-              name="tags"
-            />
-          </div> */}
-          <button onClick={saveProyectito} className="btn btn-success">
+       
+          <button onClick={saveProyectito} className="btn-env"
+          >
             Enviar
           </button>
         </div>

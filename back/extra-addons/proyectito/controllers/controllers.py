@@ -1,11 +1,8 @@
-
 from odoo import http
 from odoo.http import request
 
 
 class Proyectito(http.Controller):
-
-   
 
     @http.route('/api/proyectito/getAll', type="json", auth="public", csrf=True, cors='*')
     def list(self):
@@ -14,12 +11,11 @@ class Proyectito(http.Controller):
         for rec in proyectito_rec:
             vals = {
                 'id': rec.id,
-                'name': rec.name,
-                'project': rec.project_id.name,
-                # 'user': rec.user_id.name,
-                # 'stage': rec.stage_id.name,
-                # 'status': rec.kanban_state_label,
-                # 'description': rec.description,
+                'name':rec.name,
+                'proyecto': rec.project_id.name,
+                'asignada': rec.user_id.name,
+                'bolita':rec.stage_id.name,
+                'estado':rec.kanban_state_label
             }
             proyectito.append(vals)
         return {'status': 200, 'response': proyectito, 'message': 'Success'}
@@ -29,9 +25,12 @@ class Proyectito(http.Controller):
         model_to_get = request.env['project.task']
         rec = model_to_get.browse(rec_id).sudo().ensure_one()
         val = {
-            'id': rec.id,
-            'name':rec.name,
-            'project': rec.project_id.name,
+                'id': rec.id,
+                'name':rec.name,
+                'proyecto': rec.project_id.name,
+                'asignada': rec.user_id.name,
+                'bolita':rec.stage_id.name,
+                'estado':rec.kanban_state_label
         }
         data = {'status': 200, 'response': val, 'message': 'Success'}
         return data
@@ -44,9 +43,12 @@ class Proyectito(http.Controller):
         proyectito = []
         for rec in proyectito_rec:
             vals = {
-            'id': rec.id,
-            'name':rec.name,
-            'project': rec.project_id.name,
+                'id': rec.id,
+                'name':rec.name,
+                'proyecto': rec.project_id.name,
+                'asignada': rec.user_id.name,
+                'bolita':rec.stage_id.name,
+                'estado':rec.kanban_state_label
             }
             proyectito.append(vals)
         return {'status': 200, 'response': proyectito, 'message': 'Success'}

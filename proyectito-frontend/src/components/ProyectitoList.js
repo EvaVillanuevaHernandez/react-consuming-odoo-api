@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProyectitoDataService from "../services/ProyectitoService";
+import './ProyectitoList.css';
 import { Link } from "react-router-dom";
 
 const ProyectitoList = () => {
@@ -75,7 +76,7 @@ const ProyectitoList = () => {
             value={searchProyectito}
             onChange={onChangeSearchProyectito}
           />
-          <div className="input-group-append">
+          <div className="input-group-append" >
             <button
               className="btn btn-outline-secondary"
               type="button"
@@ -104,14 +105,10 @@ const ProyectitoList = () => {
             ))}
         </ul>
 
-        <button
-          className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllProyectito}
-        >
-          Borrar todo
-        </button>
+        <button className="m-3 btn-borrar" id="btn-borrar" onClick={removeAllProyectito}>
+          Borrar todo </button>
       </div>
-      <div className="col-md-6">
+      <div className="col-md-6" id="tareas">
         {currentProyectito ? (
           <div>
             <h4>Proyectito</h4>
@@ -140,8 +137,12 @@ const ProyectitoList = () => {
               </label>{" "}
               {currentProyectito.estado}
             </div>
-           
-
+            <div>
+              <label>
+                <strong>Fase:</strong>
+              </label>{" "}
+              {currentProyectito.bolita}
+            </div>
             <Link
               to={"/app/proyectito/" + currentProyectito.id}
               className="badge badge-warning"

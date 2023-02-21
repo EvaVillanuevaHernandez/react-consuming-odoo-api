@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import  ProyectitoDataService from "../services/ProyectitoService";
 import { Link } from 'react-router-dom';
+import './Proyectito.css';
 const Proyectito = props => {
   const { id }= useParams();
   let navigate = useNavigate();
@@ -11,7 +12,8 @@ const Proyectito = props => {
     name:"",
     proyecto: "",
     asignada:"",
-    estado:""
+    estado:"",
+    bolita:""
     
   };
   const [currentProyectito, setCurrentProyectito] = useState(initialProyectitoState);
@@ -73,51 +75,26 @@ const Proyectito = props => {
                 value={currentProyectito.name}
                 onChange={handleInputChange}
               />
+          </div>
+          <div className="form-group">
+              <label htmlFor="bolita">Estado</label>
+              <input
+                type="text"
+                className="form-control"
+                id="bolita"
+                name="bolita"
+                value={currentProyectito.bolita}
+                onChange={handleInputChange}
+              />
             </div>
-            {/* <div className="form-group">
-              <label htmlFor="proyecto">Proyecto</label>
-              <input
-                type="text"
-                className="form-control"
-                id="proyecto"
-                name="proyecto"
-                value={currentProyectito.proyecto}
-                onChange={handleInputChange}
-              />
-            </div> */}
-            {/* <div className="form-group">
-              <label htmlFor="asignada">Asignada</label>
-              <input
-                type="text"
-                className="form-control"
-                id="asignada"
-                name="asignada"
-                value={currentProyectito.asignada}
-                onChange={handleInputChange}
-              />
-            </div> */}
-            {/* <div className="form-group">
-              <label htmlFor="estado">Estado</label>
-              <input
-                type="text"
-                className="form-control"
-                id="estado"
-                name="estado"
-                value={currentProyectito.estado}
-                onChange={handleInputChange}
-              />
-            </div> */}
-            
-
           </form>
 
-          <button className="badge badge-danger mr-2" onClick={deleteProyectito}>
+          <button className="btn-1" onClick={deleteProyectito}>
             Borrar
           </button>
-
           <button
           type="submit"
-          className="badge badge-success"
+          className="btn-1"
           onClick={updateProyectito}>
           <Link to={`/app/proyectito`}>Actualizar</Link>
           </button>

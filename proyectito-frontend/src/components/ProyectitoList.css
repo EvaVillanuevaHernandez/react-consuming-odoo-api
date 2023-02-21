@@ -1,0 +1,38 @@
+#btn-borrar{
+    border-radius: 5px;
+    color: rgb(57, 33, 80);
+    background-color:rgb(219, 208, 230);
+    border-color: rgb(57, 33, 80);
+}
+
+
+
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background-color: rgb(239, 227, 240);
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.badge-warning {
+    color: #212529;
+    background-color:  rgb(182, 176, 189);
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: rgb(208, 208, 215);
+    background-clip: padding-box;
+    border: 1px solid rgb(57, 33, 80);
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
