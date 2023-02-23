@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProyectitoDataService from "../services/ProyectitoService";
-import './AddProyectito.css';
+
 const AddProyectito = () => {
-  const initialContratadorState = {
+  const initialProyectitoState = {
     id: null,
-    name:"",
-    proyecto:"",
-    asignada:"",
-    bolita:""
+    name: "",
+    proyecto: "",
+    user: "",
+    fase: "",
+    estado: ""
   };
-  const [proyectito, setProyectito] = useState(initialContratadorState);
+
+  const [proyectos, setProyectos] = useState([]);
+  const [proyectito, setProyectito] = useState(initialProyectitoState);
   const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = event => {
@@ -17,21 +20,28 @@ const AddProyectito = () => {
     setProyectito({ ...proyectito, [name]: value });
   };
 
+  const handleEstadoChange = event => {
+    setProyectito({ ...proyectito, estado: event.target.value });
+  };
+
   const saveProyectito = () => {
     var data = {
       name: proyectito.name,
       proyecto: proyectito.proyecto,
-      bolita:proyectito.bolita,
-      
+      user: proyectito.user,
+      fase: proyectito.fase,
+      estado: proyectito.estado
     };
 
     ProyectitoDataService.create(data)
       .then(response => {
         setProyectito({
           id: response.data.id,
-          name:response.data.id,
+          name: response.data.id,
           proyecto: response.data.proyecto,
-          bolita: response.data.bolita
+          user: response.data.user,
+          fase: response.data.fase,
+          estado: response.data.estado
         });
         setSubmitted(true);
       })
@@ -41,7 +51,7 @@ const AddProyectito = () => {
   };
 
   const newProyectito = () => {
-    setProyectito(initialContratadorState);
+    setProyectito(initialProyectitoState);
     setSubmitted(false);
   };
 
@@ -49,8 +59,8 @@ const AddProyectito = () => {
     <div className="submit-form">
       {submitted ? (
         <div>
-          <h4>Se ha añadido correctamente!</h4>
-          <button className="btn-env" onClick={newProyectito}>
+          <h4>¡Se ha añadido con éxito!</h4>
+          <button className="btn btn-success" onClick={newProyectito}>
             Añadir
           </button>
         </div>
@@ -68,9 +78,7 @@ const AddProyectito = () => {
               name="name"
             />
           </div>
-       
-          <button onClick={saveProyectito} className="btn-env"
-          >
+          <button onClick={saveProyectito} className="btn btn-success">
             Enviar
           </button>
         </div>

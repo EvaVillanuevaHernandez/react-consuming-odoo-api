@@ -1,7 +1,6 @@
 from odoo import http
 from odoo.http import request
 
-
 class Proyectito(http.Controller):
 
     @http.route('/api/proyectito/getAll', type="json", auth="public", csrf=True, cors='*')
@@ -13,8 +12,8 @@ class Proyectito(http.Controller):
                 'id': rec.id,
                 'name':rec.name,
                 'proyecto': rec.project_id.name,
-                'asignada': rec.user_id.name,
-                'bolita':rec.stage_id.name,
+                'user': rec.user_id.name,
+                'fase':rec.stage_id.name,
                 'estado':rec.kanban_state_label
             }
             proyectito.append(vals)
@@ -28,8 +27,8 @@ class Proyectito(http.Controller):
                 'id': rec.id,
                 'name':rec.name,
                 'proyecto': rec.project_id.name,
-                'asignada': rec.user_id.name,
-                'bolita':rec.stage_id.name,
+                'user': rec.user_id.name,
+                'fase':rec.stage_id.name,
                 'estado':rec.kanban_state_label
         }
         data = {'status': 200, 'response': val, 'message': 'Success'}
@@ -46,8 +45,8 @@ class Proyectito(http.Controller):
                 'id': rec.id,
                 'name':rec.name,
                 'proyecto': rec.project_id.name,
-                'asignada': rec.user_id.name,
-                'bolita':rec.stage_id.name,
+                'user': rec.user_id.name,
+                'fase':rec.stage_id.name,
                 'estado':rec.kanban_state_label
             }
             proyectito.append(vals)

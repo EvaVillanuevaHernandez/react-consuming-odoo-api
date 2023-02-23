@@ -82,7 +82,7 @@ const create = data => {
       "data": {
         "name":data.name,
         "bolita":data.bolita,
-        'user_id': 2,'create_uid': 2,'write_uid': 2,
+        'user_id': 2,
         'project_id': 1,
       }
     }
@@ -109,10 +109,6 @@ const update = (id, data) => {
     "params": {
       "data": {
         "name":data.name,
-        // "proyecto": data.project_id.name,
-        // "estado": data.stage_id.name,
-        // "asignada":data.user_id.name,
-        // 'tags':data.tag_ids, 
       }
     }
   });

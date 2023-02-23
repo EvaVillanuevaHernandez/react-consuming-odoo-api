@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import  ProyectitoDataService from "../services/ProyectitoService";
 import { Link } from 'react-router-dom';
-import './Proyectito.css';
 const Proyectito = props => {
   const { id }= useParams();
   let navigate = useNavigate();
@@ -11,9 +10,8 @@ const Proyectito = props => {
     id: null,
     name:"",
     proyecto: "",
-    asignada:"",
-    estado:"",
-    bolita:""
+    user:"",
+    estado:""
     
   };
   const [currentProyectito, setCurrentProyectito] = useState(initialProyectitoState);
@@ -42,7 +40,7 @@ const Proyectito = props => {
   const updateProyectito = () => {
     ProyectitoDataService.update(currentProyectito.id, currentProyectito)
       .then(response => {
-        setMessage("The proyectito was updated successfully!");
+        setMessage("¡Tarea actualizada con éxito!");
       })
       .catch(e => {
         console.log(e);
@@ -75,26 +73,16 @@ const Proyectito = props => {
                 value={currentProyectito.name}
                 onChange={handleInputChange}
               />
-          </div>
-          <div className="form-group">
-              <label htmlFor="bolita">Estado</label>
-              <input
-                type="text"
-                className="form-control"
-                id="bolita"
-                name="bolita"
-                value={currentProyectito.bolita}
-                onChange={handleInputChange}
-              />
             </div>
           </form>
 
-          <button className="btn-1" onClick={deleteProyectito}>
-            Borrar
+          <button className="badge badge-danger mr-2" onClick={deleteProyectito}>
+            Eliminar
           </button>
+
           <button
           type="submit"
-          className="btn-1"
+          className="badge badge-success"
           onClick={updateProyectito}>
           <Link to={`/app/proyectito`}>Actualizar</Link>
           </button>
@@ -103,7 +91,7 @@ const Proyectito = props => {
       ) : (
         <div>
           <br />
-          <p>Haga click en una tarea para ver su información...</p>
+          <p>Selecciona una tarea para ver más detalles...</p>
         </div>
       )}
     </div>

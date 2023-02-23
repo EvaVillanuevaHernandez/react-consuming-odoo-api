@@ -6,8 +6,7 @@ class ProjectKanban(models.Model):
     @api.model
     def create(self, vals):
         project = super(ProjectKanban, self).create(vals)
-
-        # Crear estados del Kanban
+    
         self.env['project.task.type'].create({
             'name': 'Sin iniciar',
             'project_ids': [(4, project.id)],
@@ -39,7 +38,7 @@ class ProjectKanban(models.Model):
             'description': 'Tareas que han sido revisadas'
         })
 
-        # Crear tareas en estado "Sin iniciar"
+
         tasks = [
             {
                 'name': 'Análisis',

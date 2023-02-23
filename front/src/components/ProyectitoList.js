@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ProyectitoDataService from "../services/ProyectitoService";
-import './ProyectitoList.css';
 import { Link } from "react-router-dom";
 
 const ProyectitoList = () => {
@@ -51,7 +50,7 @@ const ProyectitoList = () => {
 
   const findByProyectito = () => {
 
-    if(searchProyectito === '') {
+    if (searchProyectito === '') {
       refreshList();
       return;
     }
@@ -76,7 +75,7 @@ const ProyectitoList = () => {
             value={searchProyectito}
             onChange={onChangeSearchProyectito}
           />
-          <div className="input-group-append" >
+          <div className="input-group-append">
             <button
               className="btn btn-outline-secondary"
               type="button"
@@ -105,55 +104,60 @@ const ProyectitoList = () => {
             ))}
         </ul>
 
-        <button className="m-3 btn-borrar" id="btn-borrar" onClick={removeAllProyectito}>
-          Borrar todo </button>
+        <button
+          className="m-3 btn btn-sm btn-danger"
+          onClick={removeAllProyectito}
+        >
+          Borrar todo
+        </button>
       </div>
-      <div className="col-md-6" id="tareas">
+      <div className="col-md-6">
         {currentProyectito ? (
           <div>
-            <h4>Proyectito</h4>
+            <h4>Datos</h4>
             <div>
               <label>
-                <strong>Tarea:</strong>
+                <strong>Nombre:</strong>
               </label>{" "}
               {currentProyectito.name}
             </div>
             <div>
               <label>
-                <strong>Proyecto:</strong>
+                <strong>Proyecto asociado:</strong>
               </label>{" "}
               {currentProyectito.proyecto}
             </div>
             <div>
               <label>
-                <strong>Asignado a:</strong>
+                <strong>Encargado a:</strong>
               </label>{" "}
-              {currentProyectito.asignada}
+              {currentProyectito.user}
             </div>
-
+            <div>
+              <label>
+                <strong>Fase:</strong>
+              </label>{" "}
+              {currentProyectito.fase}
+            </div>
             <div>
               <label>
                 <strong>Estado:</strong>
               </label>{" "}
               {currentProyectito.estado}
             </div>
-            <div>
-              <label>
-                <strong>Fase:</strong>
-              </label>{" "}
-              {currentProyectito.bolita}
-            </div>
+
+
             <Link
               to={"/app/proyectito/" + currentProyectito.id}
               className="badge badge-warning"
             >
-              Edit
+              Editar
             </Link>
           </div>
         ) : (
           <div>
             <br />
-            <p>Selecciona una tarea para ver su información... </p>
+            <p>Selecciona una tarea para ver más detalles...</p>
           </div>
         )}
       </div>
